@@ -1,5 +1,5 @@
 {
-  "name": "@channels-app/functions-netlify",
+  "name": "@bc-subscription/functions-netlify",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
