@@ -1,0 +1,20 @@
+{
+  "name": "bc-subscription",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "git@github.com:zhex900/bc-subscription.git",
+  "author": "jake he <zhex900@gmail.com>",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "start": "lerna run start",
+    "netlify:dev": "netlify dev"
+  },
+  "dependencies": {
+    "lerna": "^3.16.4",
+    "yarn": "^1.17.3"
+  }
+}

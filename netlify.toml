@@ -1,0 +1,18 @@
+[build]
+    base = "packages/app"
+    publish = "packages/app/build"
+    command = "npm run build"
+
+    functions = "packages/functions-netlify/build"
+
+[dev]
+    framework = "#custom"
+    command = "npm start"
+    targetPort = 8081
+    publish = "packages/app/build" # If you use a _redirect file, provide the path to your static content folder
+    functions = "packages/functions-netlify/build"
+
+[[headers]]
+    for = "*.js" # js files should be set this way
+    [headers.values]
+        cache-control = "max-age=0,no-cache,no-store,must-revalidate"

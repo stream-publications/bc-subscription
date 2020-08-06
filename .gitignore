@@ -1,0 +1,10 @@
+node_modules
+.runtimeconfig.json
+ngrok.yml
+./netlify
+yarn-error.log
+.env
+.idea/
+
+# Local Netlify folder
+.netlify
