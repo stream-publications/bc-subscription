@@ -11,6 +11,7 @@
   "scripts": {
     "build": "lerna run build",
     "start": "lerna run start",
+    "test:ci": "lerna run test:ci --stream",
     "netlify:dev": "netlify dev"
   },
   "dependencies": {
