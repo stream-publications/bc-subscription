@@ -1,6 +1,6 @@
 [build]
     publish = "packages/app/build"
-    command = "npm run install; npm run build"
+    command = "ls && lerna bootstrap && npm run build"
     functions = "packages/functions-netlify/build"
 
 [dev]
