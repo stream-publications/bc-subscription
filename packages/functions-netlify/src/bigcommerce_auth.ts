@@ -57,7 +57,7 @@ exports.handler = async (event, context, callback) => {
     console.log(`Error: ${JSON.stringify(err)}`);
     return {
       statusCode: 500,
-      body: "Error Installing App",
+      body: `Error Installing App: ${process.env.BC_CLIENT_ID}`,
     };
   }
 };

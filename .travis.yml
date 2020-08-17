@@ -14,12 +14,6 @@ script:
 before_deploy:
   - npm install netlify-cli -g
   - npm run build
-  - echo "APP_URL=$APP_URL" >> .env
-  - echo "BC_AUTH_CALLBACK=$BC_AUTH_CALLBACK" >> .env
-  - echo "BC_CLIENT_ID=$BC_CLIENT_ID" >> .env
-  - echo "BC_CLIENT_SECRET=$BC_CLIENT_SECRET" >> .env
-  - echo "FAUNADB_SERVER_SECRET=$FAUNADB_SERVER_SECRET" >> .env
-  - cat .env
 
 deploy:
   - provider: script
