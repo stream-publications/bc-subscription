@@ -10,6 +10,14 @@ cache:
 script:
   - lerna bootstrap
   - npm run test:ci
+
+before_deploy:
+  - npm install netlify-cli -g
   - npm run build
 
-#deploy:
+deploy:
+  - provider: script
+    script: netlify deploy -s $NETLIFY_SITE_ID -a $NETLIFY_AUTH_TOKEN --prod
+    skip_cleanup: true
+    on:
+      branch: master

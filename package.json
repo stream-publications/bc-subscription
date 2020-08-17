@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "lerna": "^3.16.4",
+    "netlify-cli": "^2.59.1",
     "yarn": "^1.17.3"
   }
 }
