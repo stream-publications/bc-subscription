@@ -8,7 +8,6 @@ cache:
     - node_modules
 
 script:
-  - npm install
   - lerna bootstrap
   - npm run test:ci
   - npm run build
