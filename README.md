@@ -1,5 +1,5 @@
 # Big Commerce Subscription
-[![Build Status](https://travis-ci.com/stream-publications/bc-subscription.svg?token=kkgjHwqaVGduvLErtjjH&branch=master)](https://travis-ci.com/stream-publications/bc-subscription)
+[![Build Status](https://travis-ci.com/stream-publications/bc-subscription.svg?token=kkgjHwqaVGduvLErtjjH&branch=master)](https://travis-ci.com/stream-publications/bc-subscription) [![Netlify Status](https://api.netlify.com/api/v1/badges/a8619b6b-f76e-4a8e-bd8a-ec11109b8e46/deploy-status)](https://app.netlify.com/sites/bc-subscription/deploys)
 
 This app serves two main purposes, as:
 
