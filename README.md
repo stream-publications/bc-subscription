@@ -5,8 +5,6 @@ This app serves two main purposes, as:
 
 ## App Installation
 
-TODO
-
 ## Local Development & Testing
 
 To get the app running locally, you'll need the following dependencies:
