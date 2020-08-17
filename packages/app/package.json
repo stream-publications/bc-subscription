@@ -8,6 +8,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "axios": "^0.19.2",
     "lerna": "^3.22.1",
     "node-bigcommerce": "^4.1.0",
     "react": "^16.13.1",
