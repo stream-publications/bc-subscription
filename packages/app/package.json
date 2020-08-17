@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "axios": "^0.19.2",
     "lerna": "^3.22.1",
     "node-bigcommerce": "^4.1.0",
     "react": "^16.13.1",
@@ -20,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -1,6 +1,6 @@
 [build]
     base = "packages/app"
-    publish = "packages/app/build"
+    publish = "build"
     command = "npm run build"
 
     functions = "packages/functions-netlify/build"

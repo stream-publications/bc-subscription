@@ -11,10 +11,12 @@
   "scripts": {
     "build": "lerna run build",
     "start": "lerna run start",
+    "test:ci": "lerna run test:ci --stream",
     "netlify:dev": "netlify dev"
   },
   "dependencies": {
     "lerna": "^3.16.4",
+    "netlify-cli": "^2.59.1",
     "yarn": "^1.17.3"
   }
 }

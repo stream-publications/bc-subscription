@@ -1,10 +1,9 @@
 # Big Commerce Subscription
+[![Build Status](https://travis-ci.com/stream-publications/bc-subscription.svg?token=kkgjHwqaVGduvLErtjjH&branch=master)](https://travis-ci.com/stream-publications/bc-subscription)
 
 This app serves two main purposes, as:
 
 ## App Installation
-
-TODO
 
 ## Local Development & Testing
 

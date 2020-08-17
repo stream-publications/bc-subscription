@@ -1,7 +1,7 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import {ChannelListPage} from './pages/ChannelListPage';
-import {ChannelDetailPage} from './pages/ChannelDetailPage';
+// import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import {ChannelListPage} from './pages/ChannelListPage';
+// import {ChannelDetailPage} from './pages/ChannelDetailPage';
 import logo from './assets/logo.svg';
 import './App.css';
 
@@ -22,12 +22,12 @@ function App() {
                     Learn React
                 </a>
                 <div>hi</div>
-                <Router>
-                    <Route path="/" exact component={ChannelListPage} />
-                    <Route path="/channel/" component={ChannelDetailPage} />
-                </Router>
+                {/* <Router> */}
+                {/*    <Route path="/" exact component={ChannelListPage} /> */}
+                {/*    <Route path="/channel/" component={ChannelDetailPage} /> */}
+                {/* </Router> */}
             </header>
-            <ChannelListPage />
+            {/* <ChannelListPage /> */}
         </div>
     );
 }
