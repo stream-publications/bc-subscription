@@ -21,13 +21,7 @@ function App() {
                 >
                     Learn React Now
                 </a>
-                <div>hi</div>
-                {/* <Router> */}
-                {/*    <Route path="/" exact component={ChannelListPage} /> */}
-                {/*    <Route path="/channel/" component={ChannelDetailPage} /> */}
-                {/* </Router> */}
             </header>
-            {/* <ChannelListPage /> */}
         </div>
     );
 }
