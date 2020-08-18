@@ -1,10 +1,9 @@
-[build]
+[context.deploy-preview]
     publish = "packages/app/build"
     command = "ls && lerna bootstrap && npm run build"
     functions = "packages/functions-netlify/build"
 
 [context.production]
-    ignore = "exit 0"
 
 [dev]
     framework = "#custom"
