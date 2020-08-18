@@ -27,7 +27,7 @@ exports.handler = async (event, context, callback) => {
     const authorizationData: interfaces.AuthResponse = await bigCommerce.authorize(
       event.queryStringParameters
     );
-
+    console.log("authorizationData", authorizationData);
     const storeData: models.StoreData = {
       access_token: authorizationData.access_token,
       scope: authorizationData.scope,
@@ -38,8 +38,8 @@ exports.handler = async (event, context, callback) => {
       users: [authorizationData.user],
     };
 
-    await repository.createRecord(faunadbClient, storeData);
-
+    const r = await repository.createRecord(faunadbClient, storeData);
+    console.log("r", r);
     return {
       statusCode: 302,
       headers: {
