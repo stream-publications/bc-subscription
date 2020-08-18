@@ -3,6 +3,9 @@
     command = "ls && lerna bootstrap && npm run build"
     functions = "packages/functions-netlify/build"
 
+[context.production]
+    command = "echo 'skip production build'"
+
 [dev]
     framework = "#custom"
     command = "npm start"
