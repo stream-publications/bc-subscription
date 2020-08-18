@@ -3,6 +3,7 @@
     command = "ls && lerna bootstrap && npm run build"
     functions = "packages/functions-netlify/build"
 
+# travis ci is used for production deployment
 [context.production]
     ignore = "echo 'skip production build'"
 
