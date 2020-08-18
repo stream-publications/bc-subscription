@@ -4,7 +4,7 @@
     functions = "packages/functions-netlify/build"
 
 [context.production]
-    ignore = "exit 1"
+    ignore = "echo 'skip production build'"
 
 [dev]
     framework = "#custom"
