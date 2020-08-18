@@ -22,12 +22,18 @@ const bigCommerce = new BigCommerce({
 
 exports.handler = async (event, context, callback) => {
   console.info("Bang", event);
-  console.info(process.env.BC_CLIENT_ID);
+  console.info(
+    "BC-",
+    process.env.BC_CLIENT_ID,
+    process.env.BC_CLIENT_SECRET,
+    process.env.FAUNADB_SERVER_SECRET,
+    process.env.APP_URL
+  );
   try {
     const authorizationData: interfaces.AuthResponse = await bigCommerce.authorize(
       event.queryStringParameters
     );
-
+    console.log("authorizationData", authorizationData);
     const storeData: models.StoreData = {
       access_token: authorizationData.access_token,
       scope: authorizationData.scope,
@@ -38,9 +44,9 @@ exports.handler = async (event, context, callback) => {
       users: [authorizationData.user],
     };
 
-    await repository.createRecord(faunadbClient, storeData);
-
-    return {
+    const r = await repository.createRecord(faunadbClient, storeData);
+    console.log("r", r);
+    const rr = {
       statusCode: 302,
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -53,11 +59,13 @@ exports.handler = async (event, context, callback) => {
       },
       body: "",
     };
+    console.log("rr", rr);
+    return rr;
   } catch (err) {
-    console.log(`Error: ${JSON.stringify(err)}`);
+    console.log(err);
     return {
       statusCode: 500,
-      body: `Error Installing App: ${process.env.BC_CLIENT_ID}`,
+      body: `Error Installing App`,
     };
   }
 };
