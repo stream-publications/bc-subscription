@@ -4,6 +4,7 @@
     functions = "packages/functions-netlify/build"
 
 [context.production]
+    ignore = "exit 0"
 
 [dev]
     framework = "#custom"
