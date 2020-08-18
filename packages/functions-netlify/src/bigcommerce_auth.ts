@@ -26,7 +26,8 @@ exports.handler = async (event, context, callback) => {
     "BC-",
     process.env.BC_CLIENT_ID,
     process.env.BC_CLIENT_SECRET,
-    process.env.FAUNADB_SERVER_SECRET
+    process.env.FAUNADB_SERVER_SECRET,
+    process.env.APP_URL
   );
   try {
     const authorizationData: interfaces.AuthResponse = await bigCommerce.authorize(
@@ -45,7 +46,7 @@ exports.handler = async (event, context, callback) => {
 
     const r = await repository.createRecord(faunadbClient, storeData);
     console.log("r", r);
-    return {
+    const rr = {
       statusCode: 302,
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -58,8 +59,10 @@ exports.handler = async (event, context, callback) => {
       },
       body: "",
     };
+    console.log("rr", rr);
+    return rr;
   } catch (err) {
-    console.log(`Error: ${JSON.stringify(err)}`);
+    console.log(err);
     return {
       statusCode: 500,
       body: `Error Installing App`,
