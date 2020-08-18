@@ -22,7 +22,12 @@ const bigCommerce = new BigCommerce({
 
 exports.handler = async (event, context, callback) => {
   console.info("Bang", event);
-  console.info("BC", process.env.BC_CLIENT_ID, process.env.BC_CLIENT_SECRET);
+  console.info(
+    "BC-",
+    process.env.BC_CLIENT_ID,
+    process.env.BC_CLIENT_SECRET,
+    process.env.FAUNADB_SERVER_SECRET
+  );
   try {
     const authorizationData: interfaces.AuthResponse = await bigCommerce.authorize(
       event.queryStringParameters
