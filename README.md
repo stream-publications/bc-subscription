@@ -1,7 +1,55 @@
 # Big Commerce Subscription
 [![Build Status](https://travis-ci.com/stream-publications/bc-subscription.svg?token=kkgjHwqaVGduvLErtjjH&branch=master)](https://travis-ci.com/stream-publications/bc-subscription) [![Netlify Status](https://api.netlify.com/api/v1/badges/a8619b6b-f76e-4a8e-bd8a-ec11109b8e46/deploy-status)](https://app.netlify.com/sites/bc-subscription/deploys)
 
-This app serves two main purposes, as:
+## Overview
+bc-subscription is a bigcommerce app for creating 💪 flexible 📖publication subscription service.
+
+### Why built this app?
+All the existing subscription apps only creates subscription service for recurring payment for the same product. This does not work for publication subscription where each publication is a different product with a varied price. This app aims to provide a solution the following use cases:
+
+### Use case
+- Customer should be able to subscribe to a periodic publication.
+	- Publication period is not defined. The customer will receive a new publication whenever it is published.
+	- The publication title is different at every publication. Customer is billed on the latest publication title.
+	- The publication price is not set. The customer subscribe to a product series with no fix price.
+- Customer should be able to adjust the quantity of product they are subscribing. This means the customer can change the number of - copies of the publications they are ordering.
+- Account customers can subscribe without paying upfront. They will be invoiced to be paid later.
+- General customers must store their credit card so they are charged at when a new publication is issued.
+- Shop staff controls what product is added to the new publication or issue.
+- New publication or issue is created on demand by the shop staff. Basically, whenever the new publication is ready for print.
+## Features
+This app serves two kinds of users. Customer that subscribe and manages their subscription. Shop staff that manages and process all the subscriptions
+
+### Shop staff
+- Create/edit subscription.
+	- Change subscription name
+	- Change subscription image
+	- Minimum subscribing period
+	- Customer group restriction.
+- Add/delete books to a subscription
+	- Books can have variants. Like English, Chinese and Korean.
+- Edit subscribers
+	- Add/remove customer's subscription.
+	- Edit customer's subscription quantity
+	- Edit customer's subscription shipping (yes/no)
+- Issue processing
+	- Create an issue by adding subscriptions. An issue can have multiple subscriptions.
+	- Issue processing will generate orders for all the subscribers
+		- If the subscriber have credit card stored, charge the card. Otherwise set the order as pay via invoice
+		- Credit card payment should have credit card surcharge. Credit card surcharge should be a bigcommerce product so the amount can be changed.
+		- The order should have all the products in each subscription.
+		- Customer's locality, issue name and subscription name(s) should be saved in a custom order field.
+### Customer
+- Add/edit/remove subscription
+	- The customer can make changes to each subscription's shipping and quantity
+	- A subscription can only be remove when the minimum subscription period are meet.
+	- All changes are saved when the customer click on the save button.
+- Account customers can subscribe without stored credit card
+- Non-account customer must have stored credit card to subscribe.
+	- The customer must agree/authorize to charge the credit card
+## Confirmation email
+- Send confirmation email after subscription changes. Changes can be made by the shop staff or the customer. The confirmation email should describe what changes are made. A new subscription should say a welcome message. Cancellation should say a sorry to see you go message. The email is send to both the customer and bcc a shop email.
+
 
 ## App Installation
 
