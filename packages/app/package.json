@@ -4,25 +4,24 @@
   "private": true,
   "dependencies": {
     "@bigcommerce/big-design": "^0.22.0",
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-router-dom": "^5.1.5",
+    "@bigcommerce/big-design-icons": "^0.13.0",
     "axios": "^0.19.2",
-    "lerna": "^3.22.1",
     "node-bigcommerce": "^4.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:ci": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint './src/**/*.{ts,tsx,js}' --cache --fix",
+    "lint:ci": "eslint './src/**/*.{ts,tsx,js}'",
+    "lint:style": "stylelint '**/*.{css,scss,sass}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,10 +43,12 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.20.0",
@@ -55,6 +56,22 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "prettier": "^2.0.5"
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-prettier": "^1.1.2",
+    "typescript": "~3.7.2"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": "eslint --fix",
+    "src/**/*.{css,scss,sass}": "stylelint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
