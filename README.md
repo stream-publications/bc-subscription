@@ -151,7 +151,7 @@ In another terminal execute in the root of the project directory to start the se
 
 `yarn netlify:dev`
 
-The service will live reload on saved changes.  If you want to restart simply stop the `yarn netlify:dev` process and restart it, 
+The service will live reload on saved changes.  If you want to restart simply stop the `npm netlify:dev` process and restart it, 
 there should be no need to restart ngrok.
 
 Reference: 

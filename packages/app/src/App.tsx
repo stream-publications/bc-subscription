@@ -1,10 +1,8 @@
 import React from 'react';
-// import {BrowserRouter as Router, Route} from 'react-router-dom';
-// import {ChannelListPage} from './pages/ChannelListPage';
-// import {ChannelDetailPage} from './pages/ChannelDetailPage';
 import logo from './assets/logo.svg';
 import './App.css';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
     return (
         <div className="App">

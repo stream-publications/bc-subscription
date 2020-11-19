@@ -1,217 +1,206 @@
-import React, { useState, useContext, createContext, useMemo } from "react";
+import React, {useState, useContext, createContext, useMemo} from 'react';
 
-import { Channel } from "../models/Channel";
-import { Site } from "../models/Site";
-import { Route } from "../models/Route";
+import {Channel} from '../models/Channel';
+import {Site} from '../models/Site';
+import {Route} from '../models/Route';
 
-import { ChannelsAPI, SitesAPI, RoutesAPI } from "../api";
+import {ChannelsAPI, SitesAPI, RoutesAPI} from '../api';
 
 const noop = () => {};
 
 interface ChannelState {
-  channel: undefined | Channel;
-  site: undefined | Site;
-  routes: undefined | Array<Route>;
+    channel: undefined | Channel;
+    site: undefined | Site;
+    routes: undefined | Array<Route>;
 
-  isChannelLoading: boolean;
-  isSiteLoading: boolean;
-  isRoutesLoading: boolean;
+    isChannelLoading: boolean;
+    isSiteLoading: boolean;
+    isRoutesLoading: boolean;
 
-  fetchData: Function;
-  fetchChannel: Function;
-  fetchSite: Function;
-  reloadRoutes: Function;
+    fetchData: Function;
+    fetchChannel: Function;
+    fetchSite: Function;
+    reloadRoutes: Function;
 
-  createRoute: Function;
+    createRoute: Function;
 
-  updateChannel: Function;
-  updateSite: Function;
+    updateChannel: Function;
+    updateSite: Function;
 
-  deleteSite: Function;
-  deleteRoute: Function;
+    deleteSite: Function;
+    deleteRoute: Function;
 }
 
 const ChannelContext = createContext<ChannelState>({
-  channel: undefined,
-  site: undefined,
-  routes: undefined,
+    channel: undefined,
+    site: undefined,
+    routes: undefined,
 
-  isChannelLoading: false,
-  isSiteLoading: false,
-  isRoutesLoading: false,
+    isChannelLoading: false,
+    isSiteLoading: false,
+    isRoutesLoading: false,
 
-  fetchData: noop,
-  fetchChannel: noop,
-  fetchSite: noop,
-  reloadRoutes: noop,
+    fetchData: noop,
+    fetchChannel: noop,
+    fetchSite: noop,
+    reloadRoutes: noop,
 
-  createRoute: noop,
+    createRoute: noop,
 
-  updateChannel: noop,
-  updateSite: noop,
+    updateChannel: noop,
+    updateSite: noop,
 
-  deleteSite: noop,
-  deleteRoute: noop
+    deleteSite: noop,
+    deleteRoute: noop,
 });
 
 export const ChannelProvider = (props: any) => {
-  const [channel, setChannel] = useState<Channel>();
-  const [site, setSite] = useState<Site>();
-  const [routes, setRoutes] = useState<Array<Route>>();
+    const [channel, setChannel] = useState<Channel>();
+    const [site, setSite] = useState<Site>();
+    const [routes, setRoutes] = useState<Array<Route>>();
 
-  const [isChannelLoading, setIsChannelLoading] = useState(false);
-  const [isSiteLoading, setIsSiteLoading] = useState(false);
-  const [isRoutesLoading, setIsRoutesLoading] = useState(false);
+    const [isChannelLoading, setIsChannelLoading] = useState(false);
+    const [isSiteLoading, setIsSiteLoading] = useState(false);
+    const [isRoutesLoading, setIsRoutesLoading] = useState(false);
 
-  const state = useMemo<ChannelState>(() => {
-    return {
-      channel: channel,
-      site: site,
-      routes: routes,
+    const state = useMemo<ChannelState>(() => {
+        return {
+            channel: channel,
+            site: site,
+            routes: routes,
 
-      isChannelLoading: isChannelLoading,
-      isSiteLoading: isSiteLoading,
-      isRoutesLoading: isRoutesLoading,
+            isChannelLoading: isChannelLoading,
+            isSiteLoading: isSiteLoading,
+            isRoutesLoading: isRoutesLoading,
 
-      fetchData: async (channelId: number) => {
-        setIsChannelLoading(true);
-        setIsSiteLoading(true);
-        setIsRoutesLoading(true);
+            fetchData: async (channelId: number) => {
+                setIsChannelLoading(true);
+                setIsSiteLoading(true);
+                setIsRoutesLoading(true);
 
-        const channelData = await ChannelsAPI.fetchChannel(channelId);
+                const channelData = await ChannelsAPI.fetchChannel(channelId);
 
-        setChannel(channelData.data);
+                setChannel(channelData.data);
 
-        setIsChannelLoading(false);
+                setIsChannelLoading(false);
 
-        // TODO make platform constant
-        if (channelData.data && channelData.data.type === "storefront") {
-          const siteData = await SitesAPI.fetchSiteForChannel(
-            channelData.data.id
-          );
+                // TODO make platform constant
+                if (channelData.data && channelData.data.type === 'storefront') {
+                    const siteData = await SitesAPI.fetchSiteForChannel(channelData.data.id);
 
-          setSite(siteData.data);
+                    setSite(siteData.data);
 
-          setIsSiteLoading(false);
+                    setIsSiteLoading(false);
 
-          if (siteData.data) {
-            const routesData = await RoutesAPI.fetchAllRoutes(siteData.data.id);
+                    if (siteData.data) {
+                        const routesData = await RoutesAPI.fetchAllRoutes(siteData.data.id);
 
-            setRoutes(routesData.data);
-          }
+                        setRoutes(routesData.data);
+                    }
 
-          setIsRoutesLoading(false);
-        } else {
-          setIsSiteLoading(false);
-          setIsRoutesLoading(false);
-        }
-      },
+                    setIsRoutesLoading(false);
+                } else {
+                    setIsSiteLoading(false);
+                    setIsRoutesLoading(false);
+                }
+            },
 
-      fetchChannel: async (channelId: number) => {
-        setIsChannelLoading(true);
+            fetchChannel: async (channelId: number) => {
+                setIsChannelLoading(true);
 
-        const data = await ChannelsAPI.fetchChannel(channelId);
+                const data = await ChannelsAPI.fetchChannel(channelId);
 
-        setChannel(data.data);
+                setChannel(data.data);
 
-        setIsChannelLoading(false);
-      },
+                setIsChannelLoading(false);
+            },
 
-      fetchSite: async (siteId: number) => {
-        setIsSiteLoading(true);
+            fetchSite: async (siteId: number) => {
+                setIsSiteLoading(true);
 
-        const data = await SitesAPI.fetchSite(siteId);
+                const data = await SitesAPI.fetchSite(siteId);
 
-        setSite(data.data);
+                setSite(data.data);
 
-        setIsSiteLoading(false);
-      },
+                setIsSiteLoading(false);
+            },
 
-      reloadRoutes: async () => {
-        if (state.site) {
-          setIsRoutesLoading(true);
+            reloadRoutes: async () => {
+                if (state.site) {
+                    setIsRoutesLoading(true);
 
-          const routesData = await RoutesAPI.fetchAllRoutes(state.site.id);
+                    const routesData = await RoutesAPI.fetchAllRoutes(state.site.id);
 
-          setRoutes(routesData.data);
+                    setRoutes(routesData.data);
 
-          setIsRoutesLoading(false);
-        }
-      },
+                    setIsRoutesLoading(false);
+                }
+            },
 
-      createRoute: async (type: string, matching: string, route: string) => {
-        if (state.site) {
-          setIsRoutesLoading(true);
+            createRoute: async (type: string, matching: string, route: string) => {
+                if (state.site) {
+                    setIsRoutesLoading(true);
 
-          await RoutesAPI.createRoute(state.site.id, type, matching, route);
+                    await RoutesAPI.createRoute(state.site.id, type, matching, route);
 
-          const routesData = await RoutesAPI.fetchAllRoutes(state.site.id);
+                    const routesData = await RoutesAPI.fetchAllRoutes(state.site.id);
 
-          setRoutes(routesData.data);
-        }
+                    setRoutes(routesData.data);
+                }
 
-        setIsRoutesLoading(false);
-      },
+                setIsRoutesLoading(false);
+            },
 
-      updateChannel: async (
-        name: string,
-        externalId: string,
-        enabled: boolean
-      ) => {
-        if (state.channel) {
-          setIsChannelLoading(true);
+            updateChannel: async (name: string, externalId: string, enabled: boolean) => {
+                if (state.channel) {
+                    setIsChannelLoading(true);
 
-          await ChannelsAPI.updateChannel(
-            state.channel.id,
-            name,
-            externalId,
-            enabled
-          );
-          await state.fetchChannel(state.channel.id);
-        }
+                    await ChannelsAPI.updateChannel(state.channel.id, name, externalId, enabled);
+                    await state.fetchChannel(state.channel.id);
+                }
 
-        setIsChannelLoading(false);
-      },
+                setIsChannelLoading(false);
+            },
 
-      updateSite: async (url: string) => {
-        if (state.site) {
-          setIsSiteLoading(true);
+            updateSite: async (url: string) => {
+                if (state.site) {
+                    setIsSiteLoading(true);
 
-          await SitesAPI.updateSite(state.site.id, url);
+                    await SitesAPI.updateSite(state.site.id, url);
 
-          await state.fetchSite(state.site.id);
-        }
+                    await state.fetchSite(state.site.id);
+                }
 
-        setIsSiteLoading(false);
-      },
+                setIsSiteLoading(false);
+            },
 
-      deleteSite: async () => {
-        if (state.routes && state.site) {
-          setIsSiteLoading(true);
+            deleteSite: async () => {
+                if (state.routes && state.site) {
+                    setIsSiteLoading(true);
 
-          await SitesAPI.deleteSite(state.site.id);
+                    await SitesAPI.deleteSite(state.site.id);
 
-          setSite(undefined);
+                    setSite(undefined);
 
-          setIsSiteLoading(false);
-        }
-      },
+                    setIsSiteLoading(false);
+                }
+            },
 
-      deleteRoute: async (routeId: number) => {
-        if (state.routes && state.site) {
-          setIsRoutesLoading(true);
+            deleteRoute: async (routeId: number) => {
+                if (state.routes && state.site) {
+                    setIsRoutesLoading(true);
 
-          await RoutesAPI.deleteRoute(state.site.id, routeId);
+                    await RoutesAPI.deleteRoute(state.site.id, routeId);
 
-          await state.reloadRoutes();
+                    await state.reloadRoutes();
 
-          setIsRoutesLoading(false);
-        }
-      }
-    };
-  }, [channel, isChannelLoading, site, isSiteLoading, routes, isRoutesLoading]);
+                    setIsRoutesLoading(false);
+                }
+            },
+        };
+    }, [channel, isChannelLoading, site, isSiteLoading, routes, isRoutesLoading]);
 
-  return <ChannelContext.Provider value={state} {...props} />;
+    return <ChannelContext.Provider value={state} {...props} />;
 };
 
 export const useChannelContext = () => useContext(ChannelContext);

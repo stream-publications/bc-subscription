@@ -15,8 +15,8 @@
     "netlify:dev": "netlify dev"
   },
   "dependencies": {
-    "lerna": "^3.16.4",
-    "netlify-cli": "^2.59.1",
-    "yarn": "^1.17.3"
+    "lerna": "^3.22.1",
+    "netlify-cli": "^2.68.6",
+    "yarn": "^1.22.10"
   }
 }

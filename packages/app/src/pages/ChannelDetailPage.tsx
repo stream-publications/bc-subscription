@@ -1,18 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { RouteComponentProps } from "react-router-dom";
+import {RouteComponentProps} from 'react-router-dom';
 
-import { Box} from "@bigcommerce/big-design";
+import {Box} from '@bigcommerce/big-design';
 
-
-export interface ChannelDetailPageProps extends RouteComponentProps {}
+export type ChannelDetailPageProps = RouteComponentProps;
 
 export const ChannelDetailPage: React.FC<ChannelDetailPageProps> = () => {
-
-
-  return (
-    <Box marginVertical="xxLarge" marginHorizontal="xxxLarge">
-      HI
-    </Box>
-  );
+    return (
+        <Box marginVertical="xxLarge" marginHorizontal="xxxLarge">
+            HI
+        </Box>
+    );
 };
